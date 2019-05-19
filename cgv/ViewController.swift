@@ -8,7 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var movieInfoTableView: UITableView!
+    
+    var selectedIndex: Int?
+    
+    var movie: [Moviedata] = []
+    //var collectionViewIndexPath: IndexPath!
+    let movieInfoHeader = ["개봉", "등급", "장르", "국가", "러닝타임", "배급"]
 
     
     override func viewDidLoad() { //모든 View들이 준비됨. 즉 View객체들이 메모리에 올라감.
