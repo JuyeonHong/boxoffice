@@ -86,6 +86,7 @@ extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoTableViewCell
         
+        cell.item = movie[0].infoDetail[indexPath.row]
         cell.header = movieInfoHeader[indexPath.row]
         
         if let `selectedIndex` = selectedIndex {
