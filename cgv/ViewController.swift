@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var movieDataCollectionView: UICollectionView!
+    @IBOutlet weak var movieInfoCollectionView: UICollectionView!
     
     @IBOutlet weak var movieInfoTableView: UITableView!
     
@@ -27,31 +30,54 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     }
     
+}
+
+extension ViewController: UICollectionViewDataSource{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movie.count
+        if collectionView == self.movieDataCollectionView{
+            return movie.count
+        }
+        else if collectionView == self.movieInfoCollectionView{
+            return 4
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieShowingCell", for: indexPath) as! MovieDataCollectionViewCell
-        cell.sendMovieDataDelegate = self
-        
-        cell.sendMovieInfoDelegate = self
-        
-        cell.item = movie[indexPath.item]
-        
-        
-        //처음 로드됐을 때 뿌릴 애들에 대한 처리
-        
-        return cell
-        
+        if collectionView == self.movieDataCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieShowingCell", for: indexPath) as! MovieDataCollectionViewCell
+            cell.sendMovieDataDelegate = self
+            cell.sendMovieInfoDelegate = self
+            cell.item = movie[indexPath.item]
+            return cell
+        }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoCollectionViewCell
+            //cell.header = movieTabbar[indexPath.row]
+            return cell
+        }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionViewIndexPath = indexPath
-//        print(indexPath.item)
-//    }
-    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        //https://stackoverflow.com/questions/28325277/how-to-set-cell-spacing-and-uicollectionview-uicollectionviewflowlayout-size-r
+        //customTabbar cell line spacing 
+        if collectionView == self.movieInfoCollectionView{
+            return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        }
+        
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+}
+
+extension ViewController: UICollectionViewDelegate{
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        collectionViewIndexPath = indexPath
+    //        print(indexPath.item)
+    //    }
 }
 
 extension ViewController: SendMovieDataDelegate{
