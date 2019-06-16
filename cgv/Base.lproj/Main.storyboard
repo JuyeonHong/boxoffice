@@ -179,8 +179,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cR4-7Q-zov">
-                                                    <rect key="frame" x="4" y="14.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="5" y="15" width="40" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -197,11 +197,13 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="uz6-l7-Yzf" firstAttribute="leading" secondItem="tAf-6f-Hdo" secondAttribute="leading" id="3Vi-5u-Ifq"/>
+                                            <constraint firstItem="cR4-7Q-zov" firstAttribute="centerX" secondItem="tAf-6f-Hdo" secondAttribute="centerX" id="Bzb-n4-z2m"/>
+                                            <constraint firstItem="cR4-7Q-zov" firstAttribute="top" secondItem="tAf-6f-Hdo" secondAttribute="top" constant="15" id="Lem-Bc-LrQ"/>
+                                            <constraint firstItem="cR4-7Q-zov" firstAttribute="leading" secondItem="tAf-6f-Hdo" secondAttribute="leading" constant="5" id="apP-3z-qRA"/>
                                             <constraint firstItem="uz6-l7-Yzf" firstAttribute="centerX" secondItem="tAf-6f-Hdo" secondAttribute="centerX" id="bfO-PW-7go"/>
-                                            <constraint firstItem="cR4-7Q-zov" firstAttribute="centerY" secondItem="tAf-6f-Hdo" secondAttribute="centerY" id="dXL-fS-uoC"/>
                                             <constraint firstAttribute="trailing" secondItem="uz6-l7-Yzf" secondAttribute="trailing" id="iha-zX-8DS"/>
                                             <constraint firstAttribute="bottom" secondItem="uz6-l7-Yzf" secondAttribute="bottom" id="kXL-8Y-EXp"/>
-                                            <constraint firstItem="cR4-7Q-zov" firstAttribute="centerX" secondItem="tAf-6f-Hdo" secondAttribute="centerX" id="pxz-Yq-vg5"/>
+                                            <constraint firstAttribute="trailing" secondItem="cR4-7Q-zov" secondAttribute="trailing" constant="5" id="sxk-Rj-L2o"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="indicatorView" destination="uz6-l7-Yzf" id="RZK-kg-fNb"/>

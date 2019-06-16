@@ -17,15 +17,14 @@ class ViewController: UIViewController {
     
     var selectedIndex: Int?
     
-    var movie: [Moviedata] = []
+    var movie: [Movie] = []
     //var collectionViewIndexPath: IndexPath!
-    let movieInfoHeader = ["개봉", "등급", "장르", "국가", "러닝타임", "배급"]
 
-    
     override func viewDidLoad() { //모든 View들이 준비됨. 즉 View객체들이 메모리에 올라감.
         super.viewDidLoad()
-        movie = Moviedata.createDummy()
+        movie = Movie.createDummy()
         movieInfoTableView.dataSource = self
+        movieInfoTableView.delegate = self
         //collectionViewIndexPath = IndexPath(item: 0, section: 0)
 
     }
@@ -55,10 +54,17 @@ extension ViewController: UICollectionViewDataSource{
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoCollectionViewCell
-            //cell.header = movieTabbar[indexPath.row]
+            cell.item = movie[0].tab[indexPath.row]
             return cell
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == self.movieInfoCollectionView{
+//            return CGSize(width: 60, height: 25)
+//        }
+//        return CGSize(width: 0, height: 0)
+//    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout{
@@ -81,7 +87,7 @@ extension ViewController: UICollectionViewDelegate{
 }
 
 extension ViewController: SendMovieDataDelegate{
-    func sendMovieData(movieData: Moviedata) {
+    func sendMovieData(movieData: Movie) {
         let vc = MovieReservationViewController.create()
         vc.item = movieData
         navigationController?.pushViewController(vc, animated: true)
@@ -90,7 +96,7 @@ extension ViewController: SendMovieDataDelegate{
 
 extension ViewController: SendMovieInfoDelegate, UITableViewDelegate{
     
-    func sendMovieInfo(selectedData: Moviedata) {
+    func sendMovieInfo(selectedData: Movie) {
             selectedIndex = movie.firstIndex {
                 $0.dDay == selectedData.dDay &&
                 $0.name == selectedData.name &&
@@ -106,17 +112,19 @@ extension ViewController: SendMovieInfoDelegate, UITableViewDelegate{
 extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieInfoHeader.count
+       return movie[0].infoHeader.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoTableViewCell
         
-        cell.item = movie[0].infoDetail[indexPath.row]
-        cell.header = movieInfoHeader[indexPath.row]
+        
+        cell.detail = movie[0].infoDetail[indexPath.row]
+        cell.header = movie[0].infoHeader[indexPath.row]
         
         if let `selectedIndex` = selectedIndex {
-            cell.item = movie[selectedIndex].infoDetail[indexPath.row]
+            cell.detail = movie[selectedIndex].infoDetail[indexPath.row]
+            cell.header = movie[selectedIndex].infoHeader[indexPath.row]
         }
         
         return cell
