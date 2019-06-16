@@ -9,11 +9,11 @@
 import UIKit
 
 protocol SendMovieDataDelegate: class {
-    func sendMovieData(movieData: Moviedata)
+    func sendMovieData(movieData: Movie)
 }
 
 protocol SendMovieInfoDelegate: class {
-    func sendMovieInfo(selectedData: Moviedata)
+    func sendMovieInfo(selectedData: Movie)
 }
 
 class MovieDataCollectionViewCell: UICollectionViewCell {
@@ -32,7 +32,7 @@ class MovieDataCollectionViewCell: UICollectionViewCell {
     weak var sendMovieInfoDelegate: SendMovieInfoDelegate?
     
     
-    var item: Moviedata! {
+    var item: Movie! {
         didSet {
             setUI()
         }

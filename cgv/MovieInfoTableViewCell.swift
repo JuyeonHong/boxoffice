@@ -14,13 +14,18 @@ class MovieInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var movieInfoDetailLabel: UILabel!
     @IBOutlet weak var movieInfoHeaderLabel: UILabel!
     
-    var header: String!
-
-    var item: String! {
-        didSet {
-            setUI()
+    var header: String!{
+        didSet{
+            setHeaderUI()
         }
     }
+
+    var detail: String! {
+        didSet {
+            setDetailUI()
+        }
+    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -30,8 +35,11 @@ class MovieInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setUI() {
-        movieInfoDetailLabel.text = item
+    func setDetailUI() {
+        movieInfoDetailLabel.text = detail
+    }
+    
+    func setHeaderUI(){
         movieInfoHeaderLabel.text = header
     }
 

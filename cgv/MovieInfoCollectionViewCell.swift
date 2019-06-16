@@ -13,11 +13,11 @@ class MovieInfoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var movieTabLabel: UILabel!
     
-//    var header: String!{
-//        didSet{
-//            setUI()
-//        }
-//    }
+    var item: String!{
+        didSet{
+            setUI()
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -25,10 +25,9 @@ class MovieInfoCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        movieTabLabel.text = "tab"
     }
     
-//    func setUI(){
-//        movieTabLabel.text = header
-//    }
+    func setUI(){
+        movieTabLabel.text = item
+    }
 }

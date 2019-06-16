@@ -13,7 +13,7 @@ class MovieReservationViewController: UIViewController {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     
-    var item: Moviedata?
+    var item: Movie?
 
     override func viewDidLoad() {
         super.viewDidLoad()
