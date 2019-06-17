@@ -10,7 +10,6 @@ import UIKit
 
 class MovieInfoTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var movieInfoDetailLabel: UILabel!
     @IBOutlet weak var movieInfoHeaderLabel: UILabel!
     

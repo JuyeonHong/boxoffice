@@ -9,10 +9,9 @@
 import UIKit
 
 class MovieInfoCollectionViewCell: UICollectionViewCell {
-    
+
+    @IBOutlet weak var tabLabel: UILabel!
     @IBOutlet weak var indicatorView: UIView!
-    @IBOutlet weak var movieTabLabel: UILabel!
-    
     var item: String!{
         didSet{
             setUI()
@@ -25,9 +24,11 @@ class MovieInfoCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        tabLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        indicatorView.isHidden = true
     }
     
     func setUI(){
-        movieTabLabel.text = item
+        tabLabel.text = item
     }
 }
