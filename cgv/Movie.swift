@@ -14,7 +14,7 @@ class Movie{
     let rating: String
     let image: String
 
-    let tab: Array<String> = ["영화정보", "출연진", "평점", "리뷰"]
+    let tab: Array<String> = ["영화정보", "출연진", "평점", "리뷰", "명대사", "추천영화"]
     
     let infoHeader: Array<String> = ["개봉", "등급", "장르", "국가", "러닝타임", "배급"]
     let infoDetail: Array<String>

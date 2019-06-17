@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var movieDataCollectionView: UICollectionView!
     @IBOutlet weak var movieInfoCollectionView: UICollectionView!
-    
     @IBOutlet weak var movieInfoTableView: UITableView!
     
     var selectedIndex: Int?
@@ -38,7 +37,7 @@ extension ViewController: UICollectionViewDataSource{
             return movie.count
         }
         else if collectionView == self.movieInfoCollectionView{
-            return 4
+            return movie[0].tab.count
         }
         return 0
     }
@@ -55,35 +54,34 @@ extension ViewController: UICollectionViewDataSource{
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoCollectionViewCell
             cell.item = movie[0].tab[indexPath.row]
+            if indexPath.row == 0{
+                cell.indicatorView.isHidden = false
+                cell.tabLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            }
             return cell
         }
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == self.movieInfoCollectionView{
-//            return CGSize(width: 60, height: 25)
-//        }
-//        return CGSize(width: 0, height: 0)
-//    }
-}
-
-extension ViewController: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        //https://stackoverflow.com/questions/28325277/how-to-set-cell-spacing-and-uicollectionview-uicollectionviewflowlayout-size-r
-        //customTabbar cell line spacing 
-        if collectionView == self.movieInfoCollectionView{
-            return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
-        }
-        
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 
 extension ViewController: UICollectionViewDelegate{
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        collectionViewIndexPath = indexPath
-    //        print(indexPath.item)
-    //    }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            if collectionView == self.movieInfoCollectionView {
+                guard let cell = collectionView.cellForItem(at: indexPath) as? MovieInfoCollectionViewCell else { return }
+                cell.tabLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.indicatorView.isHidden = false
+            }
+//            collectionViewIndexPath = indexPath
+//            print(indexPath.item)
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == self.movieInfoCollectionView {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? MovieInfoCollectionViewCell else { return }
+            cell.tabLabel.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+            cell.indicatorView.isHidden = true
+        }
+    }
 }
 
 extension ViewController: SendMovieDataDelegate{
