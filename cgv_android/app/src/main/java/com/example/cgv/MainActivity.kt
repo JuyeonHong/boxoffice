@@ -23,5 +23,10 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        // cgv logo 클릭 시 home tab 이동
+        img_logo.setOnClickListener {
+
+        }
     }
 }
