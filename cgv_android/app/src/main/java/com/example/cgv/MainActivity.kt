@@ -1,7 +1,6 @@
 package com.example.cgv
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cgv.ui.main.SectionsPagerAdapter
@@ -18,11 +17,6 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
 
         tabs.setupWithViewPager(viewPager)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
 
         // cgv logo 클릭 시 home tab 이동
         img_logo.setOnClickListener {
