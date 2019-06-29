@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CGV</string>
+
+    <string name="tab_title_home">홈</string>
+    <string name="tab_title_event">이벤트</string>
+    <string name="tab_title_store">스토어</string>
+    <string name="tab_title_playzone">플레이존</string>
+    <string name="tab_title_my">MY</string>
+
+    <string name="txt_event">This is event tab.</string>
+    <string name="txt_home">This is home tab.</string>
+    <string name="txt_my">This is my tab.</string>
+    <string name="txt_playzone">This is playzone tab.</string>
+    <string name="txt_store">This is store tab.</string>
+</resources>
