@@ -1,24 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/constraintLayout"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
 
-    <TextView
-            android:id="@+id/section_label"
-            android:layout_width="wrap_content"
+    <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:text="@string/txt_home"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintTop_creator="1"/>
+            app:layout_constraintTop_toTopOf="parent"
+    android:id="@+id/h_scrollView_movie">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+            android:padding="10dp"
+            android:id="@+id/box_movie_us">
+                <ImageView android:layout_width="150dp" android:layout_height="200dp"
+                android:id="@+id/img_movie_us"
+                android:src="@drawable/img_movie_us"
+                android:layout_marginBottom="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/txt_movie_title_us"
+                android:text="어스"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_percent_us"
+                          android:text="31.5%"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                android:textColor="#8f00ff"/>
+                <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:text="지금 예매"
+                android:textSize="15sp"/>
+            </LinearLayout>
 
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:padding="10dp"
+                          android:id="@+id/box_movie_money">
+                <ImageView android:layout_width="150dp" android:layout_height="200dp"
+                           android:id="@+id/img_movie_money"
+                           android:src="@drawable/img_movie_money"
+                           android:layout_marginBottom="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_title_money"
+                          android:text="돈"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_percent_money"
+                          android:text="81%"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="#8f00ff"/>
+                <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="지금 예매"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:padding="10dp"
+                          android:id="@+id/box_movie_fall_in_love_at_first_kiss">
+                <ImageView android:layout_width="150dp" android:layout_height="200dp"
+                           android:id="@+id/img_movie_fall_in_love_at_first_kiss"
+                           android:src="@drawable/img_movie_fall_in_love_at_first_kiss"
+                           android:layout_marginBottom="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_title_fall_in_love_at_first_kiss"
+                          android:text="장난스런 키스"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_percent_fall_in_love_at_first_kiss"
+                          android:text="10%"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="#8f00ff"/>
+                <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="지금 예매"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:padding="10dp"
+                          android:id="@+id/box_movie_dumbo">
+                <ImageView android:layout_width="150dp" android:layout_height="200dp"
+                           android:id="@+id/img_movie_dumbo"
+                           android:src="@drawable/img_movie_dumbo"
+                           android:layout_marginBottom="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_title_dumbo"
+                          android:text="덤보"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_percent_dumbo"
+                          android:text="20%"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="#8f00ff"/>
+                <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="지금 예매"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:padding="10dp"
+                          android:id="@+id/box_movie_captain_marvel">
+                <ImageView android:layout_width="150dp" android:layout_height="200dp"
+                           android:id="@+id/img_movie_captain_marvel"
+                           android:src="@drawable/img_movie_captain_marvel"
+                           android:layout_marginBottom="10dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_title_captain_marvel"
+                          android:text="캡틴 마블"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="@color/black"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/txt_movie_percent_captain_marvel"
+                          android:text="20%"
+                          android:textSize="15sp"
+                          android:layout_gravity="center"
+                          android:textColor="#8f00ff"/>
+                <Button android:layout_width="wrap_content" android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:text="지금 예매"
+                        android:textSize="15sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout_movie_info"
+            app:layout_constraintTop_toBottomOf="@+id/h_scrollView_movie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabTextColor="@color/lightGray"
+            app:tabSelectedTextColor="@color/black"
+            app:tabIndicatorColor="@color/black"/>
+
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager_movie_info"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout_movie_info"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

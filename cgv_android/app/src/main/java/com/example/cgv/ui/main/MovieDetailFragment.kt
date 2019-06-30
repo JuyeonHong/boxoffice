@@ -1,20 +1,17 @@
 package com.example.cgv.ui.main
 
-import android.graphics.Movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.example.cgv.R
-import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+
+class MovieDetailFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
 
@@ -29,9 +26,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-
-        return root
+        return inflater.inflate(R.layout.fragment_movie_detail, container, false)
     }
 
     companion object {
@@ -46,8 +41,8 @@ class HomeFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): HomeFragment {
-            return HomeFragment().apply {
+        fun newInstance(sectionNumber: Int): EventFragment {
+            return EventFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

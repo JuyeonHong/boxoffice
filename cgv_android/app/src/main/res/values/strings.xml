@@ -7,6 +7,11 @@
     <string name="tab_title_playzone">플레이존</string>
     <string name="tab_title_my">MY</string>
 
+    <string name="tab_title_detail">영화정보</string>
+    <string name="tab_title_cast">출연진</string>
+    <string name="tab_title_grade">평점</string>
+    <string name="tab_title_review">리뷰</string>
+
     <string name="txt_event">This is event tab.</string>
     <string name="txt_home">This is home tab.</string>
     <string name="txt_my">This is my tab.</string>
