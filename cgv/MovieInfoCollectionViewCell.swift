@@ -12,6 +12,7 @@ class MovieInfoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var tabLabel: UILabel!
     @IBOutlet weak var indicatorView: UIView!
+    
     var item: String!{
         didSet{
             setUI()

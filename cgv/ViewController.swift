@@ -10,27 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var movieDataCollectionView: UICollectionView!
-    @IBOutlet weak var movieInfoCollectionView: UICollectionView!
-    @IBOutlet weak var movieInfoTableView: UITableView!
+    @IBOutlet weak var movieDataCollectionView: UICollectionView! // 영화 기본정보 뷰
+    @IBOutlet weak var movieInfoCollectionView: UICollectionView! // 영화 세부 탭바
+    @IBOutlet weak var movieInfoTableView: UITableView! // 영화 세부 정보
     
     var selectedIndex: Int?
+    var tabIndex: Int?
     
     var movie: [Movie] = []
     //var collectionViewIndexPath: IndexPath!
-
+    
+    var tableViewCellType: String?
+    
     override func viewDidLoad() { //모든 View들이 준비됨. 즉 View객체들이 메모리에 올라감.
         super.viewDidLoad()
         movie = Movie.createDummy()
         movieInfoTableView.dataSource = self
         movieInfoTableView.delegate = self
         //collectionViewIndexPath = IndexPath(item: 0, section: 0)
-
     }
     
 }
 
-extension ViewController: UICollectionViewDataSource{
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.movieDataCollectionView{
@@ -57,23 +59,23 @@ extension ViewController: UICollectionViewDataSource{
             if indexPath.row == 0{
                 cell.indicatorView.isHidden = false
                 cell.tabLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition:.bottom)
             }
             return cell
         }
     }
-}
-
-extension ViewController: UICollectionViewDelegate{
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if collectionView == self.movieInfoCollectionView {
-                guard let cell = collectionView.cellForItem(at: indexPath) as? MovieInfoCollectionViewCell else { return }
-                cell.tabLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                cell.indicatorView.isHidden = false
-            }
-//            collectionViewIndexPath = indexPath
-//            print(indexPath.item)
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.movieInfoCollectionView {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? MovieInfoCollectionViewCell else { return }
+            cell.tabLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.indicatorView.isHidden = false
+            tableViewCellType = cell.item
+            movieInfoTableView.reloadData()
         }
+        //            collectionViewIndexPath = indexPath
+        //            print(indexPath.item)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == self.movieInfoCollectionView {
@@ -92,40 +94,84 @@ extension ViewController: SendMovieDataDelegate{
     }
 }
 
-extension ViewController: SendMovieInfoDelegate, UITableViewDelegate{
+extension ViewController: SendMovieInfoDelegate{
     
     func sendMovieInfo(selectedData: Movie) {
-            selectedIndex = movie.firstIndex {
-                $0.dDay == selectedData.dDay &&
-                $0.name == selectedData.name &&
-                $0.rating == selectedData.rating &&
-                $0.image == selectedData.image &&
-                $0.infoDetail == selectedData.infoDetail
+        selectedIndex = movie.firstIndex {
+            $0.dDay == selectedData.dDay &&
+            $0.name == selectedData.name &&
+            $0.rating == selectedData.rating &&
+            $0.image == selectedData.image &&
+            $0.infoDetail == selectedData.infoDetail &&
+            $0.likeRt == selectedData.likeRt &&
+            $0.netRt == selectedData.netRt &&
+            $0.audRt == selectedData.audRt
         }
         movieInfoTableView.reloadData()
     }
 }
 
 
-extension ViewController: UITableViewDataSource{
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableViewCellType == "영화정보"{
+            return 45
+        }
+        else if tableViewCellType == "리뷰"{
+            return 55
+        }
+        else {
+            return 45
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return movie[0].infoHeader.count
+        
+        if tableViewCellType == "영화정보"{
+            return movie[0].infoHeader.count
+        }
+        else if tableViewCellType == "리뷰"{
+            return 1
+        }
+        else {
+            return movie[0].infoHeader.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoTableViewCell
         
-        
-        cell.detail = movie[0].infoDetail[indexPath.row]
-        cell.header = movie[0].infoHeader[indexPath.row]
-        
-        if let `selectedIndex` = selectedIndex {
-            cell.detail = movie[selectedIndex].infoDetail[indexPath.row]
-            cell.header = movie[selectedIndex].infoHeader[indexPath.row]
+        if tableViewCellType == nil{
+            tableViewCellType = "영화정보"
         }
         
-        return cell
+        if tableViewCellType == "영화정보"{
+            let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "MovieInfoCell", for: indexPath) as! MovieInfoTableViewCell
+            
+            cell.detail = movie[0].infoDetail[indexPath.row]
+            cell.header = movie[0].infoHeader[indexPath.row]
+            
+            if let `selectedIndex` = selectedIndex {
+                cell.detail = movie[selectedIndex].infoDetail[indexPath.row]
+                cell.header = movie[selectedIndex].infoHeader[indexPath.row]
+            }
+            
+            return cell
+        }
+
+        else if tableViewCellType == "리뷰"{
+            let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+            
+            if let `selectedIndex` = selectedIndex {
+                cell.audRt = movie[selectedIndex].audRt
+                cell.likeRt = movie[selectedIndex].likeRt
+                cell.netRt = movie[selectedIndex].netRt
+            }
+            return cell
+        }
+
+        return UITableViewCell()
+        
     }
     
 }
