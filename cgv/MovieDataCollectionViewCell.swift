@@ -40,7 +40,6 @@ class MovieDataCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         reservationButton.layer.cornerRadius = 5
     }
     

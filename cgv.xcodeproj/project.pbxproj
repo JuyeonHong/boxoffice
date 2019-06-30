@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131835CA22C1081C00C9D64B /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131835C922C1081C00C9D64B /* ReviewTableViewCell.swift */; };
 		133FA6CF225DD2D300880363 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FA6CE225DD2D300880363 /* Movie.swift */; };
 		135BBAA7225C328F0036DAC6 /* MovieInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135BBAA6225C328F0036DAC6 /* MovieInfoCollectionViewCell.swift */; };
 		135BBAA9225CA3F50036DAC6 /* MovieInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135BBAA8225CA3F50036DAC6 /* MovieInfoTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		131835C922C1081C00C9D64B /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		133FA6CE225DD2D300880363 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		135BBAA6225C328F0036DAC6 /* MovieInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		135BBAA8225CA3F50036DAC6 /* MovieInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -67,16 +69,17 @@
 			isa = PBXGroup;
 			children = (
 				13BB80432252F34300515E59 /* image */,
-				137D993B22524D3100A13671 /* AppDelegate.swift */,
 				13AD330F2256E0EC009F8234 /* MovieReservationViewController.swift */,
 				137D993D22524D3100A13671 /* ViewController.swift */,
 				137D993F22524D3100A13671 /* Main.storyboard */,
 				135BBAA6225C328F0036DAC6 /* MovieInfoCollectionViewCell.swift */,
 				137D994D22524DAD00A13671 /* MovieDataCollectionViewCell.swift */,
 				135BBAA8225CA3F50036DAC6 /* MovieInfoTableViewCell.swift */,
+				131835C922C1081C00C9D64B /* ReviewTableViewCell.swift */,
 				133FA6CE225DD2D300880363 /* Movie.swift */,
 				137D994222524D3200A13671 /* Assets.xcassets */,
 				137D994422524D3200A13671 /* LaunchScreen.storyboard */,
+				137D993B22524D3100A13671 /* AppDelegate.swift */,
 				137D994722524D3200A13671 /* Info.plist */,
 			);
 			path = cgv;
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AD33102256E0EC009F8234 /* MovieReservationViewController.swift in Sources */,
+				131835CA22C1081C00C9D64B /* ReviewTableViewCell.swift in Sources */,
 				135BBAA9225CA3F50036DAC6 /* MovieInfoTableViewCell.swift in Sources */,
 				135BBAA7225C328F0036DAC6 /* MovieInfoCollectionViewCell.swift in Sources */,
 				137D993E22524D3100A13671 /* ViewController.swift in Sources */,
