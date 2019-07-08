@@ -105,7 +105,8 @@ extension ViewController: SendMovieInfoDelegate{
             $0.infoDetail == selectedData.infoDetail &&
             $0.likeRt == selectedData.likeRt &&
             $0.netRt == selectedData.netRt &&
-            $0.audRt == selectedData.audRt
+            $0.audRt == selectedData.audRt &&
+            $0.review == selectedData.review
         }
         movieInfoTableView.reloadData()
     }
@@ -118,8 +119,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         if tableViewCellType == "영화정보"{
             return 45
         }
-        else if tableViewCellType == "리뷰"{
+        else if tableViewCellType == "평점"{
             return 55
+        }
+        else if tableViewCellType == "리뷰" {
+            return 40
         }
         else {
             return 45
@@ -131,8 +135,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         if tableViewCellType == "영화정보"{
             return movie[0].infoHeader.count
         }
-        else if tableViewCellType == "리뷰"{
+        else if tableViewCellType == "평점"{
             return 1
+        }
+        else if tableViewCellType == "리뷰"{
+            return movie[0].review.count
         }
         else {
             return movie[0].infoHeader.count
@@ -158,14 +165,28 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             
             return cell
         }
-
-        else if tableViewCellType == "리뷰"{
+        else if tableViewCellType == "평점"{
             let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+
+            cell.audRt = movie[0].audRt
+            cell.likeRt = movie[0].likeRt
+            cell.netRt = movie[0].netRt
             
             if let `selectedIndex` = selectedIndex {
                 cell.audRt = movie[selectedIndex].audRt
                 cell.likeRt = movie[selectedIndex].likeRt
                 cell.netRt = movie[selectedIndex].netRt
+            }
+            
+            return cell
+        }
+        else if tableViewCellType == "리뷰"{
+            let cell = movieInfoTableView.dequeueReusableCell(withIdentifier: "MovieReviewTableViewCell", for: indexPath) as! MovieReviewTableViewCell
+            
+            cell.content = movie[0].review[indexPath.row]
+            
+            if let `selectedIndex` = selectedIndex {
+                cell.content = movie[selectedIndex].review[indexPath.row]
             }
             return cell
         }
